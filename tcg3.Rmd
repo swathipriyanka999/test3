@@ -1,0 +1,50 @@
+1) Read the data
+
+```{r}
+tcg3 <-read.csv("studentinfo.csv",encoding="UTF-8")
+print(tcg3)
+```
+
+2) Create vector from colums of the tcg3(df)
+
+```{r echo=true}
+totalmarksMade <- tcg3[,2]
+totalmarksAttempt <- tcg3[,3]
+print(totalmarksMade)
+print(totalmarksAttempt)
+```
+
+3) find mean using for loop
+
+```{r}
+sum <-0
+n <-0
+for(i in seq_along(totalmarksMade))
+{
+  sum <- sum + totalmarksMade[i]
+  n <- n+1
+}
+averagetotalmarksMade <-sum/n
+print(averagetotalmarksMade)
+```
+
+4) creating a function
+
+```{r echo=false, results="asis"}
+  findMean <<- function(x){
+  sumtotal <<-  sumtotal + x
+  numElements <<-numElements + 1
+}
+```
+
+5) use lapply
+```{r}
+sumtotal <<-0
+numElements <<- 0
+lapply(totalmarksAttempt,findMean)
+averagetotalmarksAttempt <- sumTotal / numElements
+print(averagetotalmarksAttempt)
+
+```
+
+
